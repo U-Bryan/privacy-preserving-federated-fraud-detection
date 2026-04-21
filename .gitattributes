@@ -1,0 +1,19 @@
+* text=auto eol=lf
+
+*.py        text eol=lf
+*.md        text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.toml      text eol=lf
+*.cfg       text eol=lf
+*.txt       text eol=lf
+*.cff       text eol=lf
+Makefile    text eol=lf
+
+*.png       binary
+*.pdf       binary
+*.parquet   binary
+*.pkl       binary
+*.pt        binary
+*.ckpt      binary
+*.csv       binary

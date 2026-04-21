@@ -93,11 +93,13 @@ def real_synth_pair():
     return real, synth
 
 
-def test_mmd_rbf_nonnegative_and_small_for_same_distribution(real_synth_pair):
+def test_mmd_rbf_small_for_same_distribution(real_synth_pair):
     real, synth = real_synth_pair
     val = mmd_rbf(real, synth, gamma=0.1, max_n=200)
-    assert val > -1e-6            # MMD² is non-negative up to numerical noise
-    assert abs(val) < 0.1         # two samples of the same distribution are close
+    # The unbiased MMD² estimator (Gretton et al., 2012) can take small
+    # negative values on finite samples drawn from the same distribution;
+    # we only check that the magnitude is close to zero.
+    assert abs(val) < 0.01
 
 
 def test_per_feature_kl_nonnegative(real_synth_pair):
