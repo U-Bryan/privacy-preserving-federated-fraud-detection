@@ -1,0 +1,104 @@
+# ============================================================================
+# Full reproduction of the paper's results.
+# Wall-clock on a single NVIDIA H100:
+#   Phase A   ~13–15 h   (main 10-run campaign)
+#   Phase B1   ~2–3 h    (sample-size ablation)
+#   Phase B2   ~2 h      (ε sensitivity)
+#   Phase C    ~1.5 h    (privacy attacks)
+#   Phase D    ~0.5 h    (fidelity metrics, mostly CPU)
+#   Figures    ~0.1 h
+# ============================================================================
+
+paths:
+  datasets:    ./workspace/datasets
+  checkpoints: ./workspace/checkpoints
+  results:     ./workspace/results
+  figures:     ./workspace/figures
+  logs:        ./workspace/logs
+
+data:
+  ulb_csv:    creditcard.csv           # placed under paths.datasets
+  kaggle_csv: creditcard_2023.csv
+  n_clients:  3
+
+device: auto                            # auto | cuda | cpu
+
+# ---------------------------------------------------------------------------
+# CTGAN (per-client synthetic generator with Rényi-DP accounting)
+# ---------------------------------------------------------------------------
+ctgan:
+  epochs:             100
+  batch_size:         500
+  noise_multiplier:   1.1
+  max_grad_norm:      1.0
+  embedding_dim:      128
+  generator_dim:      [256, 256]
+  discriminator_dim:  [256, 256]
+
+synthetic:
+  per_client:   150000
+  fraud_ratio:  0.30
+
+# ---------------------------------------------------------------------------
+# DP-FedAvg federated training loop
+# ---------------------------------------------------------------------------
+federated:
+  rounds:            50
+  local_epochs:      5
+  batch_size:        64
+  lr:                0.001
+  noise_multiplier:  1.1
+  max_grad_norm:     1.0
+
+# ---------------------------------------------------------------------------
+# Phase A — main 10-run campaign (5 partition seeds × 2 training seeds)
+# ---------------------------------------------------------------------------
+phase_a:
+  partition_seeds: [42, 101, 202, 303, 404]
+  training_seeds:  [7, 77]
+
+# ---------------------------------------------------------------------------
+# Phase B1 — sample-size ablation
+# ---------------------------------------------------------------------------
+phase_b1:
+  sizes:           [50000, 100000, 120000, 150000, 200000, 250000]
+  seeds:           [42, 101, 202]
+  partition_seed:  42
+
+# ---------------------------------------------------------------------------
+# Phase B2 — ε sensitivity with error bars
+# ---------------------------------------------------------------------------
+phase_b2:
+  eps_targets:     [0.5, 1.0, 1.5, 3.0, 5.0, 7.0, 10.0]
+  noise_by_eps:
+    "0.5":  3.0
+    "1.0":  2.0
+    "1.5":  1.5
+    "3.0":  1.1
+    "5.0":  0.85
+    "7.0":  0.7
+    "10.0": 0.6
+  seeds:           [42, 101, 202]
+  partition_seed:  42
+
+# ---------------------------------------------------------------------------
+# Phase C — privacy attacks (MIA defence comparison, model inversion)
+# ---------------------------------------------------------------------------
+phase_c:
+  partition_seed:       42
+  mia_sample_size:      2000
+  inversion_n_samples:  100
+  inversion_steps:      300
+  inversion_lr:         0.05
+  inversion_eps_noise:            # ε label → noise multiplier (null = no DP)
+    inf:   null
+    "10.0": 0.6
+    "3.0":  1.1
+    "1.0":  2.0
+
+# ---------------------------------------------------------------------------
+# Phase D — fidelity metrics
+# ---------------------------------------------------------------------------
+phase_d:
+  partition_seed: 42
+  subsample_n:    20000

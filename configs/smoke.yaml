@@ -1,0 +1,72 @@
+# ============================================================================
+# Smoke test — runs the full pipeline on a small sample in ~15 min on CPU
+# (2–3 min on a laptop GPU). Intended for reviewers / contributors who want
+# to verify the pipeline executes end-to-end without committing to the
+# ~20-hour full campaign. Results will not match the paper numerically.
+# ============================================================================
+
+paths:
+  datasets:    ./workspace/datasets
+  checkpoints: ./workspace/checkpoints_smoke
+  results:     ./workspace/results_smoke
+  figures:     ./workspace/figures_smoke
+  logs:        ./workspace/logs_smoke
+
+data:
+  ulb_csv:    creditcard.csv
+  kaggle_csv: creditcard_2023.csv
+  n_clients:  3
+
+device: auto
+
+ctgan:
+  epochs:             10
+  batch_size:         500
+  noise_multiplier:   1.1
+  max_grad_norm:      1.0
+  embedding_dim:      64
+  generator_dim:      [128, 128]
+  discriminator_dim:  [128, 128]
+
+synthetic:
+  per_client:   5000
+  fraud_ratio:  0.30
+
+federated:
+  rounds:            3
+  local_epochs:      1
+  batch_size:        64
+  lr:                0.001
+  noise_multiplier:  1.1
+  max_grad_norm:     1.0
+
+phase_a:
+  partition_seeds: [42]
+  training_seeds:  [7]
+
+phase_b1:
+  sizes:           [2000, 5000]
+  seeds:           [42]
+  partition_seed:  42
+
+phase_b2:
+  eps_targets:     [1.0, 3.0]
+  noise_by_eps:
+    "1.0": 2.0
+    "3.0": 1.1
+  seeds:           [42]
+  partition_seed:  42
+
+phase_c:
+  partition_seed:       42
+  mia_sample_size:      500
+  inversion_n_samples:  20
+  inversion_steps:      100
+  inversion_lr:         0.05
+  inversion_eps_noise:
+    inf:   null
+    "3.0": 1.1
+
+phase_d:
+  partition_seed: 42
+  subsample_n:    2000

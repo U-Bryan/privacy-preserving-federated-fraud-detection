@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite both the software itself and the
+  associated research article.
+type: software
+title: >-
+  Privacy-Preserving Federated Learning for Financial Fraud Detection
+  (reference implementation)
+authors:
+  - family-names: Uzoatu
+    given-names: Ifeanyi Bryan
+    affiliation: Manchester Metropolitan University
+    orcid: "https://orcid.org/0009-0008-6927-2879"
+repository-code: >-
+  https://github.com/U-Bryan/privacy-preserving-federated-fraud-detection
+license: MIT
+version: "1.0.0"
+date-released: "2026-04-21"
+keywords:
+  - federated learning
+  - differential privacy
+  - CTGAN
+  - fraud detection
+  - privacy-preserving machine learning
+preferred-citation:
+  type: article
+  title: >-
+    Privacy-Preserving Federated Learning for Financial Fraud Detection:
+    A Framework Combining Differentially Private CTGAN and Federated Averaging
+  authors:
+    - family-names: Uzoatu
+      given-names: Ifeanyi Bryan
+    - family-names: Jogunola
+      given-names: Olamide
+    - family-names: Abdullahi
+      given-names: Ahmed Danladi
+    - family-names: Adebisi
+      given-names: Bamidele                  
+    - family-names: Dargahi
+      given-names: Tooska
+  journal: IEEE Transactions on Information Forensics and Security
+  year: 2026
+  notes: Under review
