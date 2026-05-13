@@ -268,10 +268,9 @@ If you use this code or build on this work, please cite:
 
 ```bibtex
 @article{ifeanyi2026ppfl,
-  title   = {Privacy-Preserving Federated Learning for Financial Fraud Detection:
-             A Framework Combining Differentially Private {CTGAN} and Federated Averaging},
+  title   = {Privacy-Preserving Federated Learning for Fraud Detection in Distributed Banking Networks},
   author  = {Ifeanyi Bryan Uzoatu, Olamide Jogunola, Ahmed Danladi Abdullahi, Bamidele Adebisi, Tooska Dargahi},
-  journal = {IEEE Transactions on Information Forensics and Security},
+  journal = {IEEE Internet of Things Journal},
   year    = {2026},
   note    = {Under review}
 }
