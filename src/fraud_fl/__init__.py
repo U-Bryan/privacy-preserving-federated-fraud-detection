@@ -8,3 +8,5 @@ banking networks.
 Companion code for the IEEE Internet of Things Journal submission. See the
 project README for reproduction instructions.
 """
+
+__version__ = "1.0.0"
