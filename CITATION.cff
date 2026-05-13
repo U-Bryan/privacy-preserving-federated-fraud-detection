@@ -4,7 +4,7 @@ message: >-
   associated research article.
 type: software
 title: >-
-  Privacy-Preserving Federated Learning for Financial Fraud Detection
+  Privacy-Preserving Federated Learning for Fraud Detection in Distributed Banking Networks
   (reference implementation)
 authors:
   - family-names: Uzoatu
@@ -25,8 +25,7 @@ keywords:
 preferred-citation:
   type: article
   title: >-
-    Privacy-Preserving Federated Learning for Financial Fraud Detection:
-    A Framework Combining Differentially Private CTGAN and Federated Averaging
+    Privacy-Preserving Federated Learning for Fraud Detection in Distributed Banking Networks
   authors:
     - family-names: Uzoatu
       given-names: Ifeanyi Bryan
@@ -38,6 +37,6 @@ preferred-citation:
       given-names: Bamidele                  
     - family-names: Dargahi
       given-names: Tooska
-  journal: IEEE Transactions on Information Forensics and Security
+  journal: IEEE Internet of Things Journal
   year: 2026
   notes: Under review
