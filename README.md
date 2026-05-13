@@ -6,7 +6,7 @@
 
 Reference implementation and full reproducibility package for
 
-> **Privacy-Preserving Federated Learning for Financial Fraud Detection: A Framework Combining Differentially Private CTGAN and Federated Averaging.**
+> **Privacy-Preserving Federated Learning for Fraud Detection in Distributed Banking Networks.**
 > Submitted to *IEEE Internet of Things Journal*, 2026.
 
 The framework (DP-CTGAN + DP-FedAvg) attains **F1 = 0.943 ± 0.004** on the merged
