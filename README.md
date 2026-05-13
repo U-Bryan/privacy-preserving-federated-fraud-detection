@@ -1,4 +1,4 @@
-# Privacy-Preserving Federated Learning for Financial Fraud Detection
+# Privacy-Preserving Federated Learning for Fraud Detection in Distributed Banking Networks
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -7,7 +7,7 @@
 Reference implementation and full reproducibility package for
 
 > **Privacy-Preserving Federated Learning for Financial Fraud Detection: A Framework Combining Differentially Private CTGAN and Federated Averaging.**
-> Submitted to *IEEE Transactions on Information Forensics and Security*, 2026.
+> Submitted to *IEEE Internet of Things Journal*, 2026.
 
 The framework (DP-CTGAN + DP-FedAvg) attains **F1 = 0.943 ± 0.004** on the merged
 ULB-2013 / Kaggle-2023 credit-card fraud corpus under a total privacy budget of
